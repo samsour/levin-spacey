@@ -1,11 +1,9 @@
-import babelpolyfill from 'babel-polyfill';
-import $ from 'jquery';
 import Game from './Game';
 
-window.$ = window.jQuery = $;
+let ready = setInterval(() => {
+    if (document.readyState === 'complete') {
+        clearInterval(ready);
 
-$(document).ready(function() {
-    
-    let game = new Game();
-
-})
+        const game = new Game();
+    }
+}, 100);
