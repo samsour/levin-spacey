@@ -81,24 +81,24 @@ export default class Game {
         document.onkeydown = function(event){
             console.log(event);
             if(event.keyCode === 68)        //d
-                this.player.pressingRight = true;
+                this.player.movingRight = true;
             else if(event.keyCode === 83)   //s
-                this.player.pressingDown = true;
+                this.player.movingDown = true;
             else if(event.keyCode === 65) //a
-                this.player.pressingLeft = true;
+                this.player.movingLeft = true;
             else if(event.keyCode === 87) // w
-                this.player.pressingUp = true;
+                this.player.movingUp = true;
         }
     
         document.onkeyup = function(event){
             if(event.keyCode === 68)        //d
-                this.player.pressingRight = false;
+                this.player.movingRight = false;
             else if(event.keyCode === 83)   //s
-                this.player.pressingDown = false;
+                this.player.movingDown = false;
             else if(event.keyCode === 65) //a
-                this.player.pressingLeft = false;
+                this.player.movingLeft = false;
             else if(event.keyCode === 87) // w
-                this.player.pressingUp = false;
+                this.player.movingUp = false;
         }
     }
 

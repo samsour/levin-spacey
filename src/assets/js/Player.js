@@ -6,9 +6,25 @@ export default class Player extends GameObject {
 
         this.hp = 100;
         this.mp = 50;
+
+        this.movingUp = false;
+        this.movingRight = false;
+        this.movingLeft = false;   
+        this.movingDown = false;
     }
 
-    controlledMovement() {
-        
+    move() {
+        if(this.movingUp) {
+            this.y -= speed;
+        }
+        if(this.movingRight) {
+            this.x += speed;
+        }
+        if(this.movingDown) {
+            this.y += speed;
+        }
+        if(this.movingLeft) {
+            this.x -= speed;
+        }
     }
 }

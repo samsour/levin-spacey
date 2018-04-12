@@ -10,7 +10,6 @@ export default class Canvas {
         this.clearCanvas();
 
         gameObjects.forEach((gameObject) => {
-            console.log("Painting", gameObject.name);
             this.canvasContext.rect(gameObject.x, gameObject.y, gameObject.width, gameObject.height);
             this.canvasContext.stroke();
         });
