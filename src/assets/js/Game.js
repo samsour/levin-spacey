@@ -61,7 +61,9 @@ export default class Game {
     }
 
     createElements() {
-        this.player = new GameObject(
+        this.player = new Player(
+            "Player 1",
+            40, 40,
             this.canvas.getWidth(),
             this.canvas.getHeight()
         );
@@ -77,6 +79,7 @@ export default class Game {
 
     onUserInput() {
         document.onkeydown = function(event){
+            console.log(event);
             if(event.keyCode === 68)        //d
                 this.player.pressingRight = true;
             else if(event.keyCode === 83)   //s
