@@ -1,7 +1,7 @@
 import Utils from "./Utils";
 
 export default class GameObject {
-    constructor(name, width, height, maxX, maxY) {
+    constructor(name, color, width, height, maxX, maxY) {
         this.speed = '1';
         this.maxX = maxX;
         this.maxY = maxY;
@@ -10,6 +10,7 @@ export default class GameObject {
         this.width = width;
         this.height = height;
         this.name = name;
+        this.color = color;
     }
 
     move() {

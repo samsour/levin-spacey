@@ -11,7 +11,8 @@ export default class Canvas {
 
         gameObjects.forEach((gameObject) => {
             this.canvasContext.rect(gameObject.x, gameObject.y, gameObject.width, gameObject.height);
-            this.canvasContext.stroke();
+            this.canvasContext.fillStyle = gameObject.color;
+            this.canvasContext.fill();
         });
     }
 

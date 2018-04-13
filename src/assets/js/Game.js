@@ -62,7 +62,7 @@ export default class Game {
 
     createElements() {
         this.player = new Player(
-            "Player 1",
+            "Player 1", "blue",
             40, 40,
             this.canvas.getWidth(),
             this.canvas.getHeight()
