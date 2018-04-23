@@ -17,6 +17,7 @@ export default class Game {
         this.canvas = new Canvas();
         this.level = 0;
 
+        // game objects
         this.enemyList = [];
 
         this.registerEvents();
@@ -46,6 +47,7 @@ export default class Game {
 
         // Create floating elements
         this.createElements();
+        this.initializePlayerControls(this.player);
 
         // Start floating elements animation
         clearInterval(this.animationTimer);
@@ -54,6 +56,7 @@ export default class Game {
                 this.player
             ];
             gameObjects.forEach((gameObject) => {
+                // gameObject.toString();
                 gameObject.move();
             });
             this.canvas.drawCanvas(gameObjects);
@@ -69,37 +72,36 @@ export default class Game {
         );
     }
 
-
-
-
+    initializePlayerControls(player) {
+        document.onkeydown = function(event){
+            if(event.keyCode === 68)        //d
+                player.movingRight = true;
+            else if(event.keyCode === 83)   //s
+                player.movingDown = true;
+            else if(event.keyCode === 65) //a
+                player.movingLeft = true;
+            else if(event.keyCode === 87) // w
+                player.movingUp = true;
+        }
+    
+        document.onkeyup = function(event){
+            if(event.keyCode === 68)        //d
+                player.movingRight = false;
+            else if(event.keyCode === 83)   //s
+                player.movingDown = false;
+            else if(event.keyCode === 65) //a
+                player.movingLeft = false;
+            else if(event.keyCode === 87) // w
+                player.movingUp = false;
+        }
+    }
 
     /*
      * Event listeners
      */
 
     onUserInput() {
-        document.onkeydown = function(event){
-            console.log(event);
-            if(event.keyCode === 68)        //d
-                this.player.movingRight = true;
-            else if(event.keyCode === 83)   //s
-                this.player.movingDown = true;
-            else if(event.keyCode === 65) //a
-                this.player.movingLeft = true;
-            else if(event.keyCode === 87) // w
-                this.player.movingUp = true;
-        }
-    
-        document.onkeyup = function(event){
-            if(event.keyCode === 68)        //d
-                this.player.movingRight = false;
-            else if(event.keyCode === 83)   //s
-                this.player.movingDown = false;
-            else if(event.keyCode === 65) //a
-                this.player.movingLeft = false;
-            else if(event.keyCode === 87) // w
-                this.player.movingUp = false;
-        }
+        
     }
 
     onStart() {

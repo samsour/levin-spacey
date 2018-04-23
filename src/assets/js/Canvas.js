@@ -10,9 +10,8 @@ export default class Canvas {
         this.clearCanvas();
 
         gameObjects.forEach((gameObject) => {
-            this.canvasContext.rect(gameObject.x, gameObject.y, gameObject.width, gameObject.height);
             this.canvasContext.fillStyle = gameObject.color;
-            this.canvasContext.fill();
+            this.canvasContext.fillRect(gameObject.x, gameObject.y, gameObject.width, gameObject.height);
         });
     }
 
@@ -21,10 +20,12 @@ export default class Canvas {
     }
 
     getWidth() {
+        console.log("Canvas Width: " + this.canvas.width);
         return this.canvas.width;
     }
 
     getHeight() {
+        console.log("Canvas Height: " + this.canvas.height);
         return this.canvas.height;
     }
 }

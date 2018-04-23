@@ -2,7 +2,7 @@ import Utils from "./Utils";
 
 export default class GameObject {
     constructor(name, color, width, height, maxX, maxY) {
-        this.speed = '1';
+        this.speed = 4;
         this.maxX = maxX;
         this.maxY = maxY;
         this.x = Utils.randomValue(0, this.maxX);
@@ -14,5 +14,9 @@ export default class GameObject {
     }
 
     move() {
+    }
+
+    toString() {
+        console.log(this.name + ": x" + this.x + ", y" + this.y + ", " + this.width + " width, " + this.height + " height");
     }
 }
