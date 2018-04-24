@@ -9,6 +9,14 @@ export default class Canvas {
         this.background.src = "./assets/img/background.png";
     }
 
+    getWidth() {
+        return this.canvas.width;
+    }
+
+    getHeight() {
+        return this.canvas.height;
+    }
+
     drawCanvas(gameObjects) {
         this.clearCanvas();
 
@@ -21,15 +29,7 @@ export default class Canvas {
         this.canvasContext.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         // context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
-
-        this.canvasContext.drawImage(this.background, 200, 200, this.getWidth, this.getHeight);
-    }
-
-    getWidth() {
-        return this.canvas.width;
-    }
-
-    getHeight() {
-        return this.canvas.height;
+        this.canvasContext.drawImage(this.background, 0, 0, this.getWidth(), this.getHeight(), 0, 0, this.getWidth(), this.getHeight());
+        // this.canvasContext.drawImage(this.background, 200, 200, this.getWidth, this.getHeight);
     }
 }
