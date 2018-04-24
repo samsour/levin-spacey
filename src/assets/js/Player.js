@@ -41,24 +41,24 @@ export default class Player extends GameObject {
     initializeControls() {
         document.onkeydown = (event) => {
             if(event.keyCode === 68)        //d
-                this.player.movingRight = true;
+                this.movingRight = true;
             else if(event.keyCode === 83)   //s
-                this.player.movingDown = true;
+                this.movingDown = true;
             else if(event.keyCode === 65) //a
-                this.player.movingLeft = true;
+                this.movingLeft = true;
             else if(event.keyCode === 87) // w
-                this.player.movingUp = true;
+                this.movingUp = true;
         }
     
         document.onkeyup = (event) => {
             if(event.keyCode === 68)        //d
-                this.player.movingRight = false;
+                this.movingRight = false;
             else if(event.keyCode === 83)   //s
-                this.player.movingDown = false;
+                this.movingDown = false;
             else if(event.keyCode === 65) //a
-                this.player.movingLeft = false;
+                this.movingLeft = false;
             else if(event.keyCode === 87) // w
-                this.player.movingUp = false;
+                this.movingUp = false;
         }
 
         document.onclick = (mouse) => {
