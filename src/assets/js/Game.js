@@ -27,7 +27,6 @@ export default class Game {
 
     registerEvents() {
         // Listener for user input
-        this.onUserInput();
 
         // Listener for start button
         this.onStart();
@@ -54,7 +53,6 @@ export default class Game {
 
         // Create floating elements
         this.createElements();
-        this.initializePlayerControls(this.player);
 
         // Start floating elements animation
         clearInterval(this.animationTimer);
@@ -84,52 +82,24 @@ export default class Game {
 
     createElements() {
         this.player = new Player(
-            "Player 1", "blue",
+            "Player 1", "green", 2,
             40, 40,
-            this.canvas.getWidth(),
-            this.canvas.getHeight()
+            this.canvas.getWidth() - 40,
+            this.canvas.getHeight() - 40
         );
 
-        for(let i = 0; i < 10; i++) {
+        for(let i = 0; i < 20; i++) {
             this.createRandomEnemy();
         }
     }
 
     createRandomEnemy() {
-        this.enemyList.push(new Enemy("Enemy", "red", 20, 20, this.canvas.getWidth(), this.canvas.getHeight()));
-    }
-
-    initializePlayerControls(player) {
-        document.onkeydown = function(event){
-            if(event.keyCode === 68)        //d
-                player.movingRight = true;
-            else if(event.keyCode === 83)   //s
-                player.movingDown = true;
-            else if(event.keyCode === 65) //a
-                player.movingLeft = true;
-            else if(event.keyCode === 87) // w
-                player.movingUp = true;
-        }
-    
-        document.onkeyup = function(event){
-            if(event.keyCode === 68)        //d
-                player.movingRight = false;
-            else if(event.keyCode === 83)   //s
-                player.movingDown = false;
-            else if(event.keyCode === 65) //a
-                player.movingLeft = false;
-            else if(event.keyCode === 87) // w
-                player.movingUp = false;
-        }
+        this.enemyList.push(new Enemy("Enemy", "blue", 1, 5, 20, this.canvas.getWidth(), this.canvas.getHeight()));
     }
 
     /*
      * Event listeners
      */
-
-    onUserInput() {
-        
-    }
 
     onStart() {
         const startButton = document.getElementById('js-start-button');

@@ -1,8 +1,8 @@
 import Utils from "./Utils";
 
 export default class GameObject {
-    constructor(name, color, width, height, maxX, maxY) {
-        this.speed = 4;
+    constructor(name, color, speed, width, height, maxX, maxY) {
+        this.speed = speed;
         this.maxX = maxX;
         this.maxY = maxY;
         this.x = Utils.randomValue(0, this.maxX);
@@ -14,19 +14,8 @@ export default class GameObject {
     }
 
     move() {
-        // restrict area to available space -> Canvas.width & height
-        // Auto move & bouncing
-        if(this.y > 0) {
-            this.y -= this.speed;
-        }
-        if(this.x < this.maxX - this.width) {
-            this.x += this.speed;
-        }
         if(this.y < this.maxY - this.height) {
             this.y += this.speed;
-        }
-        if(this.x > 0) {
-            this.x -= this.speed;
         }
     }
 
