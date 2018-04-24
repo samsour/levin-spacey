@@ -4,6 +4,9 @@ export default class Canvas {
         this.canvas = document.getElementById('js-main-canvas');
         this.canvasContext = this.canvas.getContext("2d");
         this.canvasContext.font = "20px Arial";
+
+        this.background = new Image();
+        this.background.src = "./assets/img/background.png";
     }
 
     drawCanvas(gameObjects) {
@@ -17,8 +20,9 @@ export default class Canvas {
     clearCanvas() {
         this.canvasContext.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        this.canvasContext.fillStyle = "#c5c5c5";
-        this.canvasContext.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        // context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
+
+        this.canvasContext.drawImage(this.background, 200, 200, this.getWidth, this.getHeight);
     }
 
     getWidth() {
