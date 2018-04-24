@@ -1,33 +1,16 @@
 import GameObject from "./GameObject";
 
 export default class Player extends GameObject {
-    constructor(name, color, speed, height, width, maxX, maxY) {
-        super(name, color, speed, height, width, maxX, maxY);
+    constructor(name, image, speed, height, width, maxX, maxY) {
+        super(name, image, speed, height, width, maxX, maxY);
 
         this.hp = 100;
         this.mp = 50;
+        this.level = 1;
 
-        this.movingUp = false;
-        this.movingRight = false;
-        this.movingLeft = false;   
-        this.movingDown = false;
+        this.aimAngle = 0;
 
         this.initializeControls();
-    }
-
-    move() {
-        if(this.movingUp && this.y > 0) {
-            this.y -= this.speed;
-        }
-        if(this.movingRight && this.x < this.maxX) {
-            this.x += this.speed;
-        }
-        if(this.movingDown && this.y < this.maxY) {
-            this.y += this.speed;
-        }
-        if(this.movingLeft && this.x > 0) {
-            this.x -= this.speed;
-        }
     }
 
     attack() {
@@ -35,30 +18,30 @@ export default class Player extends GameObject {
     }
 
     special() {
-        console.log("Player special!")
+        console.log("Player special!");
     }
 
     initializeControls() {
         document.onkeydown = (event) => {
             if(event.keyCode === 68)        //d
-                this.movingRight = true;
+                this.moving.right = true;
             else if(event.keyCode === 83)   //s
-                this.movingDown = true;
+                this.moving.down = true;
             else if(event.keyCode === 65) //a
-                this.movingLeft = true;
+                this.moving.left = true;
             else if(event.keyCode === 87) // w
-                this.movingUp = true;
+                this.moving.up = true;
         }
     
         document.onkeyup = (event) => {
             if(event.keyCode === 68)        //d
-                this.movingRight = false;
+                this.moving.right = false;
             else if(event.keyCode === 83)   //s
-                this.movingDown = false;
+                this.moving.down = false;
             else if(event.keyCode === 65) //a
-                this.movingLeft = false;
+                this.moving.left = false;
             else if(event.keyCode === 87) // w
-                this.movingUp = false;
+                this.moving.up = false;
         }
 
         document.onclick = (mouse) => {

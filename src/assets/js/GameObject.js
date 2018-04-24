@@ -1,21 +1,59 @@
 import Utils from "./Utils";
+import Sprite from "./Sprite";
 
 export default class GameObject {
-    constructor(name, color, speed, width, height, maxX, maxY) {
+    constructor(name, image, speed, width, height, maxX, maxY) {
+        this.name = name;
         this.speed = speed;
-        this.maxX = maxX;
-        this.maxY = maxY;
-        this.x = Utils.randomValue(0, this.maxX);
-        this.y = Utils.randomValue(0, this.maxY);
+
         this.width = width;
         this.height = height;
-        this.name = name;
-        this.color = color;
+        this.maxX = maxX - this.width;
+        this.maxY = maxY - this.height;
+        this.x = Utils.randomValue(0, this.maxX);
+        this.y = Utils.randomValue(0, this.maxY);
+        
+        this.moving = {
+            up: false,
+            right: false,
+            left: false,
+            down: false
+        }
+
+        this.sprite = new Sprite(image);
     }
 
     move() {
-        if(this.y < this.maxY - this.height) {
+        if(this.moving.up && this.y > 0) {
+            this.y -= this.speed;
+        }
+        if(this.moving.right && this.x < this.maxX) {
+            this.x += this.speed;
+        }
+        if(this.moving.down && this.y < this.maxY) {
             this.y += this.speed;
+        }
+        if(this.moving.left && this.x > 0) {
+            this.x -= this.speed;
+        }
+    }
+
+    isMoving() {
+        let isMoving = false;
+
+        for(let direction in this.moving) {
+            if(this.moving[direction] == true)
+                isMoving = true;
+       }
+
+       return isMoving;
+    }
+
+    update() {
+        if(this.isMoving()) {
+            this.sprite.update("moving");
+        } else {
+            this.sprite.update("idle");
         }
     }
 

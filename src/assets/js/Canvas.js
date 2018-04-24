@@ -10,13 +10,15 @@ export default class Canvas {
         this.clearCanvas();
 
         gameObjects.forEach((gameObject) => {
-            this.canvasContext.fillStyle = gameObject.color;
-            this.canvasContext.fillRect(gameObject.x, gameObject.y, gameObject.width, gameObject.height);
+            this.canvasContext.drawImage(gameObject.sprite.image, 0, gameObject.sprite.frameIndex * 256, 256, 256, gameObject.x, gameObject.y, gameObject.width, gameObject.height);
         });
     }
 
     clearCanvas() {
         this.canvasContext.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        this.canvasContext.fillStyle = "#c5c5c5";
+        this.canvasContext.fillRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
     getWidth() {

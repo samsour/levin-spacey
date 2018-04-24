@@ -71,6 +71,7 @@ export default class Game {
             // Let every game object move
             gameObjects.forEach((gameObject) => {
                 // gameObject.toString();
+                gameObject.update();
                 gameObject.move();
             });
 
@@ -82,10 +83,10 @@ export default class Game {
 
     createElements() {
         this.player = new Player(
-            "Player 1", "green", 2,
-            40, 40,
-            this.canvas.getWidth() - 40,
-            this.canvas.getHeight() - 40
+            "Player 1", "rogue-animation-sprite.png", 2,
+            64, 64,
+            this.canvas.getWidth(),
+            this.canvas.getHeight()
         );
 
         for(let i = 0; i < 20; i++) {
@@ -94,7 +95,7 @@ export default class Game {
     }
 
     createRandomEnemy() {
-        this.enemyList.push(new Enemy("Enemy", "blue", 1, 5, 20, this.canvas.getWidth(), this.canvas.getHeight()));
+        this.enemyList.push(new Enemy("Enemy", "skull-animation-sprite.png", 1, 64, 64, this.canvas.getWidth(), this.canvas.getHeight()));
     }
 
     /*
