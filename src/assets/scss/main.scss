@@ -34,22 +34,19 @@ body {
     font-size: $font-size;
     font-family: $font-family;
     text-transform: uppercase;
-    display: inline-flex;
-    align-items: center;
 
-    &::before {
-        display: inline-block;
+    &::after {
+        display: block;
         content: "";
         width: 0;
-        height: 4px;
+        height: 5px;
         background: #000;
-        box-shadow: 0 -1px 1px #000;
         transition: ease-in-out .15s all;
     }
 
     &:hover {
-        &::before {
-            width: 40px;
+        &::after {
+            width: 100%;
         }    
     }
 }
