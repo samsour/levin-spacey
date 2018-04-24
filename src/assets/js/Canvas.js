@@ -22,6 +22,10 @@ export default class Canvas {
 
         gameObjects.forEach((gameObject) => {
             this.canvasContext.drawImage(gameObject.sprite.image, 0, gameObject.sprite.frameIndex * 256, 256, 256, gameObject.x, gameObject.y, gameObject.width, gameObject.height);
+            this.canvasContext.shadowColor = "rgba(0,0,0,.5";
+            this.canvasContext.shadowBlur = 10;
+            this.canvasContext.shadowOffsetX = 2;
+            this.canvasContext.shadowOffsetY = 5;
         });
     }
 

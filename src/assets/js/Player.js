@@ -34,7 +34,7 @@ export default class Player extends GameObject {
     initializeControls() {
         document.onkeydown = event => {
 
-            // Update mouse position
+            // Update mouse position!!
 
             if(event.keyCode === 68)        //d
                 this.moving.right = true;

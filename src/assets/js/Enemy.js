@@ -1,4 +1,5 @@
 import GameObject from "./GameObject";
+import Utils from "./Utils";
 
 export default class Enemy extends GameObject {
     constructor(name, color, speed, height, width, maxX, maxY) {
@@ -11,7 +12,6 @@ export default class Enemy extends GameObject {
     }
 
     update() {
-        // this.moving.left = true;
         super.update();
     }
 }
