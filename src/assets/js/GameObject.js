@@ -14,6 +14,20 @@ export default class GameObject {
     }
 
     move() {
+        // restrict area to available space -> Canvas.width & height
+        // Auto move & bouncing
+        if(this.y > 0) {
+            this.y -= this.speed;
+        }
+        if(this.x < this.maxX - this.width) {
+            this.x += this.speed;
+        }
+        if(this.y < this.maxY - this.height) {
+            this.y += this.speed;
+        }
+        if(this.x > 0) {
+            this.x -= this.speed;
+        }
     }
 
     toString() {

@@ -20,12 +20,10 @@ export default class Canvas {
     }
 
     getWidth() {
-        console.log("Canvas Width: " + this.canvas.width);
         return this.canvas.width;
     }
 
     getHeight() {
-        console.log("Canvas Height: " + this.canvas.height);
         return this.canvas.height;
     }
 }

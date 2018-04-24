@@ -1,5 +1,6 @@
 import GameObject from './GameObject';
 import Player from './Player';
+import Enemy from './Enemy';
 import Canvas from "./Canvas";
 import Utils from "./Utils";
 import Printer from "./Printer";
@@ -40,6 +41,12 @@ export default class Game {
         this.startLevel();
     }
 
+    finish() {
+        // Reset controls
+        this.gameIsStarted = false;
+        this.enemyList = [];
+    }
+
     startLevel() {
         // Level up
         this.level++;
@@ -51,15 +58,27 @@ export default class Game {
 
         // Start floating elements animation
         clearInterval(this.animationTimer);
+        
         this.animationTimer = setInterval(() => {
+            
+            // Create temporary array with all gameObjects that will be moved
             const gameObjects = [
                 this.player
             ];
+            // Add the enemies to it
+            for(let enemy of this.enemyList) {
+                gameObjects.push(enemy);
+            }
+
+            // Let every game object move
             gameObjects.forEach((gameObject) => {
                 // gameObject.toString();
                 gameObject.move();
             });
+
+            // Draw everything
             this.canvas.drawCanvas(gameObjects);
+        
         }, this.baseSpeed);
     }
 
@@ -70,6 +89,14 @@ export default class Game {
             this.canvas.getWidth(),
             this.canvas.getHeight()
         );
+
+        for(let i = 0; i < 10; i++) {
+            this.createRandomEnemy();
+        }
+    }
+
+    createRandomEnemy() {
+        this.enemyList.push(new Enemy("Enemy", "red", 20, 20, this.canvas.getWidth(), this.canvas.getHeight()));
     }
 
     initializePlayerControls(player) {
@@ -110,6 +137,10 @@ export default class Game {
             if (!this.gameIsStarted)
             {
                 this.start();
+                startButton.innerHTML = 'STOP GAME';
+            } else {
+                this.finish();
+                startButton.innerHTML = 'START GAME';
             }
         });
     }
