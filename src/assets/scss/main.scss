@@ -51,3 +51,13 @@ body {
         }    
     }
 }
+
+.input-underline {
+    border: 0;
+    outline: 0;
+    border-bottom: 5px solid #000;
+    font-family: $font-family;
+    font-size: $font-size;
+    width: 50px;
+    text-align: center;
+}
