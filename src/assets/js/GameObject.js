@@ -21,6 +21,7 @@ export default class GameObject {
         }
 
         this.sprite = new Sprite(image);
+        this.frameCounter = 0;
     }
 
     move() {
@@ -44,12 +45,14 @@ export default class GameObject {
         for(let direction in this.moving) {
             if(this.moving[direction] == true)
                 isMoving = true;
-       }
+        }
 
        return isMoving;
     }
 
     update() {
+        this.frameCounter++;
+        
         if(this.isMoving()) {
             this.sprite.update("moving");
         } else {
