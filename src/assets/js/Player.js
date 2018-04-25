@@ -18,7 +18,22 @@ export default class Player extends GameObject {
     }
 
     special() {
-        console.log("Player special!");
+        this.castSpell("fireball");
+    }
+
+    castSpell(spell) {
+        switch(spell) {
+            case 'fireball':
+                if(this.mp >= 10){
+                    this.mp -= 10;
+                    console.log("Casting: Fireball!");
+                } else {
+                    console.log("Not enough mana for Fireball...");
+                }
+                break;
+            default:
+                console.log("Casting some black magics.");
+        }
     }
 
     calculateAimAngle(mouse) {
@@ -62,13 +77,13 @@ export default class Player extends GameObject {
         }
     
         document.oncontextmenu = mouse => {
-            this.special();
             mouse.preventDefault();
+            this.special();
         }
     
         document.onmousemove = mouse => {
             this.calculateAimAngle(mouse);
-            console.log("Aim Angle:" + this.aimAngle);
+            // console.log("Aim Angle:" + this.aimAngle);
         }
     }
 }

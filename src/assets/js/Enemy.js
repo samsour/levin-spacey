@@ -19,7 +19,7 @@ export default class Enemy extends GameObject {
         // looping this 100 times a second
         super.update();
         
-        if(this.frameCounter > 100) {
+        if(this.frameCounter > 200) {
             // looping this ~ every second
             this.frameCounter = 0;
 

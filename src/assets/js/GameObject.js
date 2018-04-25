@@ -1,5 +1,6 @@
 import Utils from "./Utils";
 import Sprite from "./Sprite";
+import Spellbook from "./Spellbook";
 
 export default class GameObject {
     constructor(name, image, speed, width, height, maxX, maxY) {
@@ -22,6 +23,8 @@ export default class GameObject {
 
         this.sprite = new Sprite(image);
         this.frameCounter = 0;
+    
+        this.spellbook = new Spellbook();
     }
 
     move() {

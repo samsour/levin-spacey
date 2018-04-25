@@ -7,7 +7,6 @@ export default class Utils {
     }
 
     static randomValue(min, max) {
-        console.log("Created random value");
         return Math.round(Math.random() * (max - min) + min);
     }
 }
