@@ -89,7 +89,8 @@ export default class Game {
             this.canvas.getHeight()
         );
 
-        for(let i = 0; i < 5; i++) {
+        let enemyCount = document.getElementById('js-enemy-count').value;
+        for(let i = 0; i < enemyCount; i++) {
             this.createRandomEnemy();
         }
     }
