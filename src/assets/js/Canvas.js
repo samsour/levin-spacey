@@ -21,19 +21,27 @@ export default class Canvas {
         this.clearCanvas();
 
         gameObjects.forEach((gameObject) => {
-            this.canvasContext.drawImage(gameObject.sprite.image, 0, gameObject.sprite.frameIndex * 256, 256, 256, gameObject.x, gameObject.y, gameObject.width, gameObject.height);
+            
+            // Game object shadow
             this.canvasContext.shadowColor = "rgba(0,0,0,.5";
             this.canvasContext.shadowBlur = 10;
             this.canvasContext.shadowOffsetX = 2;
             this.canvasContext.shadowOffsetY = 5;
+            
+            // Game object image
+            this.canvasContext.drawImage(gameObject.sprite.image, 0, gameObject.sprite.frameIndex * 256, 256, 256, gameObject.x, gameObject.y, gameObject.width, gameObject.height);
+
+            // Game object earshot radius
+            this.canvasContext.beginPath();
+            this.canvasContext.strokeStyle="#FF0000";
+            this.canvasContext.arc(gameObject.x + (gameObject.width / 2), gameObject.y + (gameObject.height / 2), gameObject.earshot, 0, 2 * Math.PI);
+            this.canvasContext.stroke();
         });
     }
 
     clearCanvas() {
         this.canvasContext.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        // context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
-        this.canvasContext.drawImage(this.background, 0, 0, this.getWidth(), this.getHeight(), 0, 0, this.getWidth(), this.getHeight());
-        // this.canvasContext.drawImage(this.background, 200, 200, this.getWidth, this.getHeight);
+        // this.canvasContext.drawImage(this.background, 0, 0, this.getWidth(), this.getHeight(), 0, 0, this.getWidth(), this.getHeight());
     }
 }

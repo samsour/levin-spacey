@@ -89,13 +89,13 @@ export default class Game {
             this.canvas.getHeight()
         );
 
-        for(let i = 0; i < 20; i++) {
+        for(let i = 0; i < 5; i++) {
             this.createRandomEnemy();
         }
     }
 
     createRandomEnemy() {
-        this.enemyList.push(new Enemy("Enemy", "skull-animation-sprite.png", 1, 64, 64, this.canvas.getWidth(), this.canvas.getHeight()));
+        this.enemyList.push(new Enemy("Enemy", "templar-animation-sprite.png", 1, 64, 64, this.canvas.getWidth(), this.canvas.getHeight()));
     }
 
     /*

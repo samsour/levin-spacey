@@ -7,11 +7,18 @@ export default class Enemy extends GameObject {
 
         this.hp = 100;
         this.mp = 50;
+
+        this.earshot = 200;
         
         console.log("Enemy created!");
     }
 
     update() {
         super.update();
+
+    }
+
+    afterTimeout() {
+        
     }
 }
