@@ -71,8 +71,10 @@ export default class Game {
             // Check critical distance
             this.enemyList.forEach((enemy) => {
                 let distance = this.checkDistanceBetween(this.player, enemy);
-
-                if(distance <= enemy.earshot && distance > enemy.attackRange) {
+                if (distance > enemy.eyeshot) {
+                    enemy.state = "idle";
+                }
+                else if(distance <= enemy.earshot && distance > enemy.attackRange) {
                     enemy.state = "focus";
                     console.log("enemy state: focus");
                     

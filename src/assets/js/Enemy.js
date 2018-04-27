@@ -9,6 +9,7 @@ export default class Enemy extends GameObject {
         this.mp = 50;
 
         this.earshot = 200;
+        this.eyeshot = 350;
         this.attackRange = 50;
 
         this.status = {
@@ -84,6 +85,7 @@ export default class Enemy extends GameObject {
         } else if(this.state === "focus") {
             this.focus(playerObject);
         } else if(this.state === "attack" && this.frameCounter > 100) {
+            this.frameCounter = 0;
             this.attack(playerObject);
         }
     }

@@ -36,6 +36,12 @@ export default class Canvas {
             this.canvasContext.strokeStyle="#FF0000";
             this.canvasContext.arc(gameObject.x + (gameObject.width / 2), gameObject.y + (gameObject.height / 2), gameObject.earshot, 0, 2 * Math.PI);
             this.canvasContext.stroke();
+
+            // Game object eyeshot radius
+            this.canvasContext.beginPath();
+            this.canvasContext.strokeStyle="#FFAA00";
+            this.canvasContext.arc(gameObject.x + (gameObject.width / 2), gameObject.y + (gameObject.height / 2), gameObject.eyeshot, 0, 2 * Math.PI);
+            this.canvasContext.stroke();
         });
     }
 
