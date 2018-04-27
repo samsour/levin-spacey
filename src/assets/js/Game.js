@@ -72,18 +72,20 @@ export default class Game {
             this.enemyList.forEach((enemy) => {
                 let distance = this.checkDistanceBetween(this.player, enemy);
 
-                if(distance <= enemy.earshot) {
-                    enemy.aggro();
-                    if(distance <= enemy.attackRange) {
-                        enemy.attack();
-                    }
+                if(distance <= enemy.earshot && distance > enemy.attackRange) {
+                    enemy.state = "focus";
+                    console.log("enemy state: focus");
+                    
+                } else if(distance <= enemy.attackRange) {
+                    enemy.state = "attack";
+                    console.log("enemy state: attack");
                 }
             });
             
             // Let every game object move
             gameObjects.forEach((gameObject) => {
                 // gameObject.toString();
-                gameObject.update();
+                gameObject.update(this.player);
                 gameObject.move();
             });
             // console.log("Looping");
