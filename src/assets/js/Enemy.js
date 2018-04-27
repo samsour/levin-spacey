@@ -9,10 +9,19 @@ export default class Enemy extends GameObject {
         this.mp = 50;
 
         this.earshot = 200;
+        this.attackRange = 50;
 
         this.waitingSince = Date.now();
 
         console.log("Enemy created!");
+    }
+
+    aggro() {
+        console.log("AGGRO!");
+    }
+
+    attack() {
+        console.log("ATTACKING!");
     }
 
     update() {

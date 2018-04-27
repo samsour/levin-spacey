@@ -68,17 +68,36 @@ export default class Game {
                 gameObjects.push(enemy);
             }
 
+            // Check critical distance
+            this.enemyList.forEach((enemy) => {
+                let distance = this.checkDistanceBetween(this.player, enemy);
+
+                if(distance <= enemy.earshot) {
+                    enemy.aggro();
+                    if(distance <= enemy.attackRange) {
+                        enemy.attack();
+                    }
+                }
+            });
+            
             // Let every game object move
             gameObjects.forEach((gameObject) => {
                 // gameObject.toString();
                 gameObject.update();
                 gameObject.move();
             });
-
+            // console.log("Looping");
             // Draw everything
             this.canvas.drawCanvas(gameObjects);
         
         }, this.baseSpeed);
+    }
+
+    checkDistanceBetween(gameObject1, gameObject2) {
+        let dx = gameObject1.x - gameObject2.x;
+        let dy = gameObject1.y - gameObject2.y;
+
+        return Math.sqrt(dx*dx+dy*dy);
     }
 
     createElements() {
