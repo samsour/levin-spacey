@@ -8,13 +8,17 @@
     <script src="./assets/js/index.js"></script>
 </head>
 <body>
+    <div class="interface">
+        <div class="interface--stats"><div id="js-player-hp" class="interface__item interface__item--hp"></div></div>
+        <div class="interface--stats"><div id="js-player-mp" class="interface__item interface__item--mp"></div></div>
+        
+    </div>
     <canvas class="game-canvas" id="js-main-canvas" width="800" height="600">
         Your browser is not supported. :(
     </canvas>
-    <div class="level">
-        <div id="js-level-value" class="level-value"></div>
-    </div>
-    <button id="js-start-button" class="start-button" type="button">Start Game</button>
+    
+    <button id="js-start-button" class="start-button" type="button">Start Game</button> | <input id="js-autostart" class="checkbox" type="checkbox" checked><label id="js-autostart-label" for="js-autostart" class="checkbox-label">Autostart</label>
     <div>WASD TO MOVE | ENEMIES: <input id="js-enemy-count" value="1" class="input-underline" type="text"> (Be careful with more than 20)</div>
+    <div id="js-level-value" class="interface__item level-value"></div>
 </body>
 </html>

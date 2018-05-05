@@ -1,4 +1,5 @@
 import Utils from "./Utils";
+import Printer from "./Printer";
 import Sprite from "./Sprite";
 import Spellbook from "./Spellbook";
 
@@ -6,6 +7,11 @@ export default class GameObject {
     constructor(name, image, speed, width, height, maxX, maxY) {
         this.name = name;
         this.speed = speed;
+
+        this.hp = 142;
+        this.mp = 69;
+        this.maxHp = this.hp;
+        this.maxMp = this.mp;
 
         this.width = width;
         this.height = height;

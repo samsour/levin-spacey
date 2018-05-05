@@ -72,15 +72,13 @@ export default class Game {
             this.enemyList.forEach((enemy) => {
                 let distance = this.checkDistanceBetween(this.player, enemy);
                 if (distance > enemy.eyeshot) {
-                    enemy.state = "idle";
+                    enemy.state = enemy.states.IDLE;
                 }
                 else if(distance <= enemy.earshot && distance > enemy.attackRange) {
-                    enemy.state = "focus";
-                    console.log("enemy state: focus");
+                    enemy.state = enemy.states.FOCUS;
                     
                 } else if(distance <= enemy.attackRange) {
-                    enemy.state = "attack";
-                    console.log("enemy state: attack");
+                    enemy.state = enemy.states.ATTACK;
                 }
             });
             
@@ -128,6 +126,7 @@ export default class Game {
 
     onStart() {
         const startButton = document.getElementById('js-start-button');
+
         startButton.addEventListener("click", (event) => {
             if (!this.gameIsStarted)
             {
@@ -138,5 +137,10 @@ export default class Game {
                 startButton.innerHTML = 'START GAME';
             }
         });
+
+        if(document.getElementById('js-autostart').checked) {
+            this.start();
+            startButton.innerHTML = 'STOP GAME';
+        }
     }
 }

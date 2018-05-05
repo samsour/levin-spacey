@@ -1,11 +1,12 @@
+import Utils from "./Utils";
+import Printer from "./Printer";
+
 import GameObject from "./GameObject";
 
 export default class Player extends GameObject {
     constructor(name, image, speed, height, width, maxX, maxY) {
         super(name, image, speed, height, width, maxX, maxY);
 
-        this.hp = 100;
-        this.mp = 50;
         this.level = 1;
 
         this.aimAngle = 0;
@@ -44,6 +45,18 @@ export default class Player extends GameObject {
         // mouseY -= player.y;
 
         this.aimAngle = Math.atan2(mouseY,mouseX) / Math.PI * 180;
+    }
+
+    update() {
+        super.update();
+
+        this.updateResources();
+    }
+
+    updateResources() {
+        // Update Mana- and Healthbars
+        Printer.printMp(this.mp, this.maxMp); //(100 / this.maxMp) * this.mp
+        Printer.printHp(this.hp, this.maxHp);
     }
 
     initializeControls() {

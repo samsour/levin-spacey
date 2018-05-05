@@ -1,25 +1,24 @@
-import GameObject from "./GameObject";
 import Utils from "./Utils";
+import Printer from "./Printer";
+
+import GameObject from "./GameObject";
 
 export default class Enemy extends GameObject {
     constructor(name, color, speed, height, width, maxX, maxY) {
         super(name, color, speed, height, width, maxX, maxY);
 
-        this.hp = 100;
-        this.mp = 50;
-
         this.earshot = 200;
         this.eyeshot = 350;
         this.attackRange = 50;
 
-        this.status = {
-            IDLE: 0,
+        this.states = {
+            IDLE: 0, // Standard
             FOCUS: 1,
             ATTACK: 2,
             STUN: 3,
         }
 
-        this.state = "idle";
+        this.state = this.states.IDLE;
 
         console.log("Enemy created!");
     }
@@ -45,8 +44,8 @@ export default class Enemy extends GameObject {
     }
 
     attack(gameObject) {
-        console.log("Attacking " + gameObject.name + "!");
         this.resetMovement();
+        console.log("Attacking " + gameObject.name + "!");
     }
 
     idle() {
@@ -78,13 +77,13 @@ export default class Enemy extends GameObject {
         // looping this 100 times a second
         super.update();
         
-        if(this.state === "idle" && this.frameCounter > 200) {
+        if(this.state === this.states.IDLE && this.frameCounter > 200) {
             // looping this ~ every second
             this.frameCounter = 0;
             this.idle();
-        } else if(this.state === "focus") {
+        } else if(this.state === this.states.FOCUS) {
             this.focus(playerObject);
-        } else if(this.state === "attack" && this.frameCounter > 100) {
+        } else if(this.state === this.states.ATTACK && this.frameCounter > 100) {
             this.frameCounter = 0;
             this.attack(playerObject);
         }

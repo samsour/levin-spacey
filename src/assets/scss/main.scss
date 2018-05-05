@@ -19,6 +19,29 @@ body {
     font-family: $font-family;
 }
 
+.interface {
+    display: flex;
+
+    &--stats {
+        flex: 1;
+    }
+
+    &__item {
+        display: inline-block;
+        width: 100%;
+        height: 50px;
+        transition: .25s ease-out all;
+
+        &--hp {
+            background: red;
+        }
+
+        &--mp {
+            background: blue;
+        }
+    }
+}
+
 .game-canvas {
     border: 5px solid #000;
     cursor: crosshair;
@@ -60,4 +83,18 @@ body {
     font-size: $font-size;
     width: 50px;
     text-align: center;
+}
+
+.checkbox-label{
+    text-decoration: line-through;
+}
+
+.checkbox {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+
+    &:checked ~ .checkbox-label{
+        text-decoration: none;
+    }
 }
