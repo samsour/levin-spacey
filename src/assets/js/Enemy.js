@@ -45,7 +45,7 @@ export default class Enemy extends GameObject {
 
     attack(gameObject) {
         this.resetMovement();
-        console.log("Attacking " + gameObject.name + "!");
+        // console.log("Attacking " + gameObject.name + "!");
     }
 
     idle() {

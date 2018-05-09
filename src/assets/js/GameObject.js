@@ -49,7 +49,7 @@ export default class GameObject {
     }
 
     resetMovement() {
-        console.log("Reset Movement");
+        // console.log("Reset Movement");
         for(let direction in this.moving) {
             this.moving[direction] = false;
         }
