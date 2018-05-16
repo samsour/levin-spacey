@@ -22,6 +22,11 @@ export default class Canvas {
 
     drawCanvas(gameObjects, player, userInterface) {
         this.clearCanvas();
+        // Background
+        this.canvasContext.beginPath();
+        this.canvasContext.rect(0, 0, this.canvas.width, this.canvas.height);
+        this.canvasContext.fillStyle = "#6DA373";
+        this.canvasContext.fill();
 
         gameObjects.forEach((gameObject) => { // Each Entity
             
