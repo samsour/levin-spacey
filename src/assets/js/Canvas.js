@@ -20,7 +20,7 @@ export default class Canvas {
         return this.canvas.height;
     }
 
-    drawCanvas(gameObjects) {
+    drawCanvas(gameObjects, player, userInterface) {
         this.clearCanvas();
 
         gameObjects.forEach((gameObject) => { // Each Entity
@@ -40,10 +40,10 @@ export default class Canvas {
             this.canvasContext.rect(gameObject.x, gameObject.y - 20, gameObject.width, 5);
             this.canvasContext.fillStyle = "#111";
             this.canvasContext.fill();
-            // actual hp percentage
+            // Actual hp percentage
             this.canvasContext.beginPath();
             this.canvasContext.rect(gameObject.x, gameObject.y - 20, (gameObject.hp/gameObject.maxHp)*gameObject.width, 5);
-            this.canvasContext.fillStyle = "red";
+            this.canvasContext.fillStyle = "#ff0000";
             this.canvasContext.fill();
 
             // Clear object shadow
@@ -63,6 +63,25 @@ export default class Canvas {
             this.canvasContext.arc(gameObject.x + (gameObject.width / 2), gameObject.y + (gameObject.height / 2), gameObject.eyeshot, 0, 2 * Math.PI);
             this.canvasContext.stroke();
         });
+
+
+        // Player interface 
+        // ability bar
+        const abilityBar = userInterface.abilityBar;
+        this.canvasContext.beginPath();
+        this.canvasContext.rect((this.canvas.width/2)-(abilityBar.width/2), this.canvas.height - abilityBar.height, abilityBar.width, abilityBar.height);
+        this.canvasContext.fillStyle = "#111";
+        this.canvasContext.fill();
+        // HP
+        this.canvasContext.beginPath();
+        this.canvasContext.rect((this.canvas.width/2)-(abilityBar.width/2), this.canvas.height - (abilityBar.height+19), (player.hp/player.maxHp)*abilityBar.width, 10);
+        this.canvasContext.fillStyle = "#ff0000";
+        this.canvasContext.fill();
+        // Mana
+        this.canvasContext.beginPath();
+        this.canvasContext.rect((this.canvas.width/2)-(abilityBar.width/2), this.canvas.height - (abilityBar.height+9), (player.mp/player.maxMp)*abilityBar.width, 10);
+        this.canvasContext.fillStyle = "#0066ff";
+        this.canvasContext.fill();
     }
 
     clearCanvas() {

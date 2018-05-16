@@ -1,4 +1,5 @@
 import GameObject from './GameObject';
+import UserInterface from './UserInterface';
 import Player from './Player';
 import Enemy from './Enemy';
 import Canvas from "./Canvas";
@@ -58,15 +59,15 @@ export default class Game {
         clearInterval(this.animationTimer);
         
         this.animationTimer = setInterval(() => {
-            
+            const userInterface = new UserInterface();
             // Create temporary array with all gameObjects that will be moved
-            const gameObjects = [
-                this.player
-            ];
+            const gameObjects = [];
             // Add the enemies to it
             for(let enemy of this.enemyList) {
                 gameObjects.push(enemy);
             }
+            // And the player
+            gameObjects.push(this.player);
 
             // Check critical distance
             this.enemyList.forEach((enemy) => {
@@ -90,7 +91,7 @@ export default class Game {
             });
             // console.log("Looping");
             // Draw everything
-            this.canvas.drawCanvas(gameObjects);
+            this.canvas.drawCanvas(gameObjects, this.player, userInterface);
         
         }, this.baseSpeed);
     }
