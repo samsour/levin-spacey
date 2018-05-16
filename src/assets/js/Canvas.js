@@ -23,16 +23,33 @@ export default class Canvas {
     drawCanvas(gameObjects) {
         this.clearCanvas();
 
-        gameObjects.forEach((gameObject) => {
+        gameObjects.forEach((gameObject) => { // Each Entity
             
             // Game object shadow
             this.canvasContext.shadowColor = "rgba(0,0,0,.5";
             this.canvasContext.shadowBlur = 10;
-            this.canvasContext.shadowOffsetX = 2;
+            this.canvasContext.shadowOffsetX = 0;
             this.canvasContext.shadowOffsetY = 5;
             
             // Game object image
             this.canvasContext.drawImage(gameObject.sprite.image, 0, gameObject.sprite.frameIndex * 256, 256, 256, gameObject.x, gameObject.y, gameObject.width, gameObject.height);
+
+            // Game object hp
+            // frame
+            this.canvasContext.beginPath();
+            this.canvasContext.rect(gameObject.x, gameObject.y - 20, gameObject.width, 5);
+            this.canvasContext.fillStyle = "#111";
+            this.canvasContext.fill();
+            // actual hp percentage
+            this.canvasContext.beginPath();
+            this.canvasContext.rect(gameObject.x, gameObject.y - 20, (gameObject.hp/gameObject.maxHp)*gameObject.width, 5);
+            this.canvasContext.fillStyle = "red";
+            this.canvasContext.fill();
+
+            // Clear object shadow
+            this.canvasContext.shadowBlur = 0;
+            this.canvasContext.shadowOffsetX = 0;
+            this.canvasContext.shadowOffsetY = 0;
 
             // Game object earshot radius
             this.canvasContext.beginPath();
