@@ -1,9 +1,12 @@
 export default class Canvas {
     constructor() {
-        this.test = 'okk';
         this.canvas = document.getElementById('js-main-canvas');
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
         this.canvasContext = this.canvas.getContext("2d");
         this.canvasContext.font = "20px Arial";
+
+
 
         this.background = new Image();
         this.background.src = "./assets/img/background.png";

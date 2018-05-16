@@ -50,13 +50,6 @@ export default class Player extends GameObject {
     update() {
         super.update();
 
-        this.updateResources();
-    }
-
-    updateResources() {
-        // Update Mana- and Healthbars
-        Printer.printMp(this.mp, this.maxMp); //(100 / this.maxMp) * this.mp
-        Printer.printHp(this.hp, this.maxHp);
     }
 
     initializeControls() {

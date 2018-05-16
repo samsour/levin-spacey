@@ -19,31 +19,7 @@ body {
     font-family: $font-family;
 }
 
-.interface {
-    display: flex;
-
-    &--stats {
-        flex: 1;
-    }
-
-    &__item {
-        display: inline-block;
-        width: 100%;
-        height: 50px;
-        transition: .25s ease-out all;
-
-        &--hp {
-            background: red;
-        }
-
-        &--mp {
-            background: blue;
-        }
-    }
-}
-
 .game-canvas {
-    border: 5px solid #000;
     cursor: crosshair;
 }
 
