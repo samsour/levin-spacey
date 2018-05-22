@@ -12,6 +12,7 @@ export default class GameObject {
         this.mp = 69;
         this.maxHp = this.hp;
         this.maxMp = this.mp;
+        this.atk = 10;
 
         this.width = width;
         this.height = height;
