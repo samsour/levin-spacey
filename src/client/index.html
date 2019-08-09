@@ -3,14 +3,28 @@
   <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width initial-scale=1.0'>
-    <title></title>
-    <link rel="stylesheet" href="/style.css" />
-    <script defer src="/bundle.js"></script>
-    <!-- <script src="/socket.io/socket.io.js"></script> -->
+    <title>Loot and Level</title>
   </head>
   <body>
-      <!-- <div>
-          <canvas id="game" class="game-window" width="480" height="320"></canvas>
-       </div> -->
+    <canvas id="game-canvas"></canvas>
+    <div id="play-menu" class="hidden">
+      <input type="text" id="username-input" placeholder="Username" />
+      <button id="play-button">PLAY</button>
+    </div>
+    <div id="leaderboard" class="hidden">
+      <table>
+        <tr>
+          <th>Username</th>
+          <th>Score</th>
+        </tr>
+      </table>
+    </div>
+      <div id="disconnect-modal" class="hidden">
+        <div>
+          <h2>Disconnected from Server </h2>
+          <hr />
+          <button id="reconnect-button">RECONNECT</button>
+        </div>
+      </div>
   </body>
 </html>
