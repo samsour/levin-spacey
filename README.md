@@ -1,14 +1,17 @@
 # Loot and Level
+## Development
 
-## Installation
+This requires Node and npm.
 
 ```
 npm install
+npm run develop
 ```
 
-## Start development
+### Production
+
 ```
+npm install
+npm run build
 npm start
 ```
-
-The start script runs webpack in watch mode, and nodemon, so any changes you make to the client or server directories should cause webpack to rebuild and the server to restart, respectively.
