@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Loot and Level online multiplayer",
   "main": "src/server/server.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/samsour/lootandlevel.git"
+  },
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "lint": "eslint --cache --ext .js,.jsx src/",
@@ -12,16 +16,11 @@
   "author": "samsour",
   "license": "MIT",
   "dependencies": {
-    "bootstrap": "^4.3.1",
     "express": "^4.16.4",
-    "html-webpack-plugin": "^3.2.0",
     "lodash": "^4.17.11",
-    "shortid": "^2.2.14",
     "socket.io": "^2.2.0",
     "socket.io-client": "^2.2.0",
-    "throttle-debounce": "^2.1.0",
-    "webpack": "^4.30.0",
-    "webpack-dev-middleware": "^3.6.2"
+    "throttle-debounce": "^2.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
@@ -33,9 +32,16 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.2",
+    "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.6.0",
+    "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
-    "webpack-cli": "^3.3.0",
+    "sass-loader": "^7.2.0",
+    "shortid": "^2.2.14",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-middleware": "^3.7.0",
     "webpack-merge": "^4.2.1"
   }
 }
