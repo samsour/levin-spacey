@@ -18,8 +18,8 @@ export const connect = onGameOver => (
     socket.on(Constants.MSG_TYPES.GAME_OVER, onGameOver);
     socket.on('disconnect', () => {
       console.log('Disconnected from server.');
-      document.getElementById('disconnect-modal').classList.remove('hidden');
-      document.getElementById('reconnect-button').onclick = () => {
+      document.getElementById('js-disconnect-modal').classList.remove('is-hidden');
+      document.getElementById('js-reconnect-button').onclick = () => {
         window.location.reload();
       };
     });

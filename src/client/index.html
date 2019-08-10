@@ -6,25 +6,31 @@
     <title>Loot and Level</title>
   </head>
   <body>
-    <canvas id="game-canvas"></canvas>
-    <div id="play-menu" class="hidden">
-      <input type="text" id="username-input" placeholder="Username" />
-      <button id="play-button">PLAY</button>
-    </div>
-    <div id="leaderboard" class="hidden">
-      <table>
-        <tr>
-          <th>Username</th>
-          <th>Score</th>
-        </tr>
-      </table>
-    </div>
-      <div id="disconnect-modal" class="hidden">
-        <div>
-          <h2>Disconnected from Server </h2>
-          <hr />
-          <button id="reconnect-button">RECONNECT</button>
+    <div class="game">
+      <canvas id="js-game-canvas" class="game__canvas"></canvas>
+
+      <div class="ui">
+        <div id="js-play-menu" class="ui__play-menu is-hidden">
+          <input type="text" id="js-username-input" placeholder="Username" class="ui__text-input"/>
+          <button id="js-play-button" class="ui__button">PLAY</button>
+        </div>
+
+        <div id="js-leaderboard" class="ui__leaderboard is-hidden">
+          <!-- <table>
+            <tr>
+              <th>Username</th>
+              <th>Score</th>
+            </tr>
+          </table> -->
+        </div>
+
+        <div id="js-disconnect-modal" class="ui__disconnect is-hidden">
+          <div>
+            <h2>Disconnected from Server </h2>
+            <button id="js-reconnect-button" class="ui__button">RECONNECT</button>
+          </div>
         </div>
       </div>
+    </div>
   </body>
 </html>

@@ -7,7 +7,7 @@ const Constants = require('../../shared/constants');
 const { PLAYER_RADIUS, PLAYER_MAX_HP, BULLET_RADIUS, MAP_SIZE } = Constants;
 
 // Get the canvas graphics context
-const canvas = document.getElementById('game-canvas');
+const canvas = document.getElementById('js-game-canvas');
 const context = canvas.getContext('2d');
 setCanvasDimensions();
 
@@ -55,7 +55,7 @@ function renderBackground(x, y) {
     MAP_SIZE / 2,
   );
   backgroundGradient.addColorStop(0, 'black');
-  backgroundGradient.addColorStop(1, 'gray');
+  backgroundGradient.addColorStop(1, '#222');
   context.fillStyle = backgroundGradient;
   context.fillRect(0, 0, canvas.width, canvas.height);
 }
