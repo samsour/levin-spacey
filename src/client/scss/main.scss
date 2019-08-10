@@ -1,4 +1,20 @@
+@import './variables';
+@import './game';
+@import './ui';
+
 * {
     box-sizing: border-box;
     margin: 0;
+}
+
+body {
+    overflow: hidden;
+    font-family: $font;
+}
+
+/*
+ * modifier classes
+ */
+.is-hidden {
+    display: none;
 }

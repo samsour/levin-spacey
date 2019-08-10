@@ -6,9 +6,9 @@ import { downloadAssets } from './assets';
 import { initState } from './state';
 import { setLeaderboardHidden } from './leaderboard';
 
-const playMenu = document.getElementById('play-menu');
-const playButton = document.getElementById('play-button');
-const usernameInput = document.getElementById('username-input');
+const playMenu = document.getElementById('js-play-menu');
+const playButton = document.getElementById('js-play-button');
+const usernameInput = document.getElementById('js-username-input');
 
 console.log(playButton);
 
@@ -16,13 +16,13 @@ Promise.all([
   connect(onGameOver),
   downloadAssets(),
 ]).then(() => {
-  playMenu.classList.remove('hidden');
+  playMenu.classList.remove('is-hidden');
   usernameInput.focus();
   playButton.onclick = () => {
     // Play!
     console.log('Start game!');
     play(usernameInput.value);
-    playMenu.classList.add('hidden');
+    playMenu.classList.add('is-hidden');
     initState();
     startCapturingInput();
     startRendering();
@@ -33,6 +33,6 @@ Promise.all([
 function onGameOver() {
   stopCapturingInput();
   stopRendering();
-  playMenu.classList.remove('hidden');
+  playMenu.classList.remove('is-hidden');
   setLeaderboardHidden(true);
 }
