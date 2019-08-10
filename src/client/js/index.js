@@ -1,3 +1,4 @@
+import '../scss/main.scss';
 import { connect, play } from './networking';
 import { startRendering, stopRendering } from './render';
 import { startCapturingInput, stopCapturingInput } from './input';
