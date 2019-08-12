@@ -32,6 +32,15 @@ class Game {
     }
   }
 
+  shoot(socket, dir) {
+    if (this.players[socket.id]) {
+      const newBullet = this.players[socket.id].shoot(dir);
+      if (newBullet) {
+        this.bullets.push(newBullet);
+      }
+    }
+  }
+
   update() {
     // Calculate time elapsed
     const now = Date.now();
@@ -51,10 +60,13 @@ class Game {
     // Update each player
     Object.keys(this.sockets).forEach(playerID => {
       const player = this.players[playerID];
+      player.update(dt);
+      /*
       const newBullet = player.update(dt);
       if (newBullet) {
         this.bullets.push(newBullet);
       }
+      */
     });
 
     // Apply collisions, give players score for hitting bullets

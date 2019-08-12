@@ -1,7 +1,14 @@
-import { updateDirection } from './networking';
+import { updateDirection, shoot } from './networking';
 
 function onMouseInput(e) {
   handleInput(e.clientX, e.clientY);
+}
+
+function onClickInput(e) {
+  var x = e.clientX;
+  var y = e.clientY;
+  const dir = Math.atan2(x - window.innerWidth / 2, window.innerHeight / 2 - y);
+  shoot(dir);
 }
 
 function onTouchInput(e) {
@@ -16,14 +23,14 @@ function handleInput(x, y) {
 
 export function startCapturingInput() {
   window.addEventListener('mousemove', onMouseInput);
-  window.addEventListener('click', onMouseInput);
+  window.addEventListener('click', onClickInput);
   window.addEventListener('touchstart', onTouchInput);
   window.addEventListener('touchmove', onTouchInput);
 }
 
 export function stopCapturingInput() {
   window.removeEventListener('mousemove', onMouseInput);
-  window.removeEventListener('click', onMouseInput);
+  window.removeEventListener('click', onClickInput);
   window.removeEventListener('touchstart', onTouchInput);
   window.removeEventListener('touchmove', onTouchInput);
 }
