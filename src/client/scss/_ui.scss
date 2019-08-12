@@ -44,5 +44,14 @@
 
     &__leaderboard {
         background: $background-ui;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 20px 30px;
+        background-color: $background-ui;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        box-shadow: 0 0 10px transparentize($color: #fff, $amount: 0.5);
     }
 }
