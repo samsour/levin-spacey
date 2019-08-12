@@ -7,7 +7,7 @@ class Player extends ObjectClass {
     super(id, x, y, Math.random() * 2 * Math.PI, Constants.PLAYER_SPEED);
     this.username = username;
     this.hp = Constants.PLAYER_MAX_HP;
-    this.fireCooldown = 0;
+    this.fireCooldown = Constants.PLAYER_FIRE_COOLDOWN;
     this.score = 0;
   }
 
@@ -22,19 +22,19 @@ class Player extends ObjectClass {
     this.x = Math.max(0, Math.min(Constants.MAP_SIZE, this.x));
     this.y = Math.max(0, Math.min(Constants.MAP_SIZE, this.y));
 
-    /*
+    
     // Fire a bullet, if needed
-    this.fireCooldown -= dt;
-    if (this.fireCooldown <= 0) {
-      this.fireCooldown += Constants.PLAYER_FIRE_COOLDOWN;
-      return new Bullet(this.id, this.x, this.y, this.direction);
+    if(this.fireCooldown >= 0){
+      this.fireCooldown -= dt;
     }
-    */
     return null;
   }
 
   shoot(dir) {
-    return new Bullet(this.id, this.x, this.y, this.direction);
+    if (this.fireCooldown <= 0) {
+      this.fireCooldown += Constants.PLAYER_FIRE_COOLDOWN;
+      return new Bullet(this.id, this.x, this.y, this.direction);
+    }
   }
 
   takeBulletDamage() {
