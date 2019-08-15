@@ -58,8 +58,9 @@ class Game {
         e.uptime--;
       }
       else{
-        
+        itemsToRemove.push(e);
       }
+      this.items = this.items.filter(item => !itemsToRemove.includes(item));
     });
   }
 
@@ -68,7 +69,9 @@ class Game {
     const now = Date.now();
     const dt = (now - this.lastUpdateTime) / 1000;
     this.lastUpdateTime = now;
-
+    
+    deleteItems()
+    spawnItem()
 
 
     // Update each bullet
