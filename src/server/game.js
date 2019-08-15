@@ -1,5 +1,6 @@
 const Constants = require('../shared/constants');
 const Player = require('./player');
+const Item = require('./item');
 const applyCollisions = require('./collisions');
 
 class Game {
@@ -7,6 +8,7 @@ class Game {
     this.sockets = {};
     this.players = {};
     this.bullets = [];
+    this.items = [];
     this.lastUpdateTime = Date.now();
     this.shouldSendUpdate = false;
     setInterval(this.update.bind(this), 1000 / 60);
@@ -41,11 +43,33 @@ class Game {
     }
   }
 
+  spawnItem(){
+    spwn = Math.floor(Math.random * 2);
+    if(spwn>0){
+      itemType = Math.floor(Math.random * 2);
+      this.items.push(new Item('boi', 100, 100));
+    }
+  }
+
+  deleteItems(){
+    this.items.forEach(e => {
+      const itemsToRemove = [];
+      if(e.uptime < Constants.ITEM_UPTIME){
+        e.uptime--;
+      }
+      else{
+        
+      }
+    });
+  }
+
   update() {
     // Calculate time elapsed
     const now = Date.now();
     const dt = (now - this.lastUpdateTime) / 1000;
     this.lastUpdateTime = now;
+
+
 
     // Update each bullet
     const bulletsToRemove = [];

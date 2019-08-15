@@ -66,6 +66,7 @@ export function getCurrentState() {
       me: interpolateObject(baseUpdate.me, next.me, ratio),
       others: interpolateObjectArray(baseUpdate.others, next.others, ratio),
       bullets: interpolateObjectArray(baseUpdate.bullets, next.bullets, ratio),
+      items: interpolateObjectArray(baseUpdate.items, next.bullets, ratio),
     };
   }
 }

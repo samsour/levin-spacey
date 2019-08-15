@@ -107,6 +107,18 @@ function renderBullet(me, bullet) {
   );
 }
 
+function renderItem(me, item){
+  const {x,y} = item;
+  context.drawImage(
+    // still renders bullet image
+    getAsset('bullet.svg'),
+    canvas.width / + x - me.x - ITEM_SIZE,
+    canvas.height / + y - me.y - ITEM_SIZE,
+   ITEM_SIZE * 2,
+   ITEM_SIZE * 2,
+  );
+}
+
 function renderMainMenu() {
   const t = Date.now() / 7500;
   const x = MAP_SIZE / 2 + 800 * Math.cos(t);
