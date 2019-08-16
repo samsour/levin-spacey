@@ -39,15 +39,18 @@ class Game {
       const newBullet = this.players[socket.id].shoot(dir);
       if (newBullet) {
         this.bullets.push(newBullet);
+        this.spawnItem();
       }
     }
   }
 
   spawnItem(){
-    spwn = Math.floor(Math.random * 2);
-    if(spwn>0){
-      itemType = Math.floor(Math.random * 2);
+    
+    const spwn = Math.floor(Math.random*2);
+    if(spwn == 1){
+      //itemType = Math.floor(Math.random * 2);
       this.items.push(new Item('boi', 100, 100));
+      console.log('Spawn');
     }
   }
 
@@ -55,7 +58,7 @@ class Game {
     this.items.forEach(e => {
       const itemsToRemove = [];
       if(e.uptime < Constants.ITEM_UPTIME){
-        e.uptime--;
+        e.uptime += e.uptime;
       }
       else{
         itemsToRemove.push(e);
@@ -69,9 +72,9 @@ class Game {
     const now = Date.now();
     const dt = (now - this.lastUpdateTime) / 1000;
     this.lastUpdateTime = now;
-    
-    deleteItems()
-    spawnItem()
+    //console.log(Math.floor(Math.random()*2));
+    this.deleteItems()
+    this.spawnItem()
 
 
     // Update each bullet
@@ -143,12 +146,17 @@ class Game {
     const nearbyBullets = this.bullets.filter(
       b => b.distanceTo(player) <= Constants.MAP_SIZE / 2,
     );
+    const nearbyItems = this.items.filter(
+      i => i.distanceTo(player) <= Constants.MAP_SIZE / 2,
+    );
+
 
     return {
       t: Date.now(),
       me: player.serializeForUpdate(),
       others: nearbyPlayers.map(p => p.serializeForUpdate()),
       bullets: nearbyBullets.map(b => b.serializeForUpdate()),
+      items: nearbyItems.map(i => i.serializeForUpdate()),
       leaderboard,
     };
   }

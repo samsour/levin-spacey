@@ -4,7 +4,7 @@ import { getCurrentState } from './state';
 
 const Constants = require('../../shared/constants');
 
-const { PLAYER_RADIUS, PLAYER_MAX_HP, BULLET_RADIUS, MAP_SIZE } = Constants;
+const { PLAYER_RADIUS, PLAYER_MAX_HP, BULLET_RADIUS, MAP_SIZE, ITEM_SIZE, ITEM_UPTIME } = Constants;
 
 // Get the canvas graphics context
 const canvas = document.getElementById('js-game-canvas');
@@ -22,7 +22,7 @@ function setCanvasDimensions() {
 window.addEventListener('resize', debounce(40, setCanvasDimensions));
 
 function render() {
-  const { me, others, bullets } = getCurrentState();
+  const { me, others, bullets, items} = getCurrentState();
   if (!me) {
     return;
   }
@@ -37,6 +37,7 @@ function render() {
 
   // Draw all bullets
   bullets.forEach(renderBullet.bind(null, me));
+  items.forEach(renderItem.bind(null, me));
 
   // Draw all players
   renderPlayer(me, me);
